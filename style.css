@@ -1,0 +1,436 @@
+/* ============================================================
+   CSS Custom Properties
+   ============================================================ */
+:root {
+  --color-bg-start: #1a1a2e;
+  --color-bg-end: #16213e;
+  --color-card: rgba(255, 255, 255, 0.07);
+  --color-card-border: rgba(255, 255, 255, 0.15);
+  --color-primary: #e94560;
+  --color-text: #e0e0e0;
+  --color-text-muted: #a0a0b0;
+  --color-input-bg: rgba(255, 255, 255, 0.1);
+  --color-btn-primary: #e94560;
+  --color-btn-primary-hover: #c73652;
+  --color-btn-secondary: rgba(255, 255, 255, 0.12);
+  --color-btn-secondary-hover: rgba(255, 255, 255, 0.22);
+  --color-error-bg: rgba(233, 69, 96, 0.15);
+  --color-error-border: rgba(233, 69, 96, 0.5);
+  --color-success-bg: rgba(255, 255, 255, 0.07);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --transition: 0.25s ease;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background: linear-gradient(135deg, var(--color-bg-start), var(--color-bg-end));
+  min-height: 100vh;
+  color: var(--color-text);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem 4rem;
+}
+
+/* ============================================================
+   Utility: Hidden
+   ============================================================ */
+.hidden {
+  display: none !important;
+}
+
+/* ============================================================
+   Welcome Popup (Cookie – First Visit)
+   ============================================================ */
+#welcome-popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  /* Animate.css class will be added via JS */
+}
+
+#welcome-popup-content {
+  background: linear-gradient(135deg, #1f2b4a, #2a1f3d);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  max-width: 360px;
+  width: 90%;
+  box-shadow: var(--shadow-card);
+  animation: bounceIn 0.6s ease both;
+}
+
+#welcome-popup-content p {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+#welcome-close-btn {
+  background: var(--color-btn-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 1.8rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+#welcome-close-btn:hover {
+  background: var(--color-btn-primary-hover);
+  transform: scale(1.04);
+}
+
+/* ============================================================
+   App Container
+   ============================================================ */
+#app-container {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ============================================================
+   Real-Time Clock
+   ============================================================ */
+#clock {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   App Title
+   ============================================================ */
+#app-container h1 {
+  text-align: center;
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+
+#app-container h1 span {
+  color: var(--color-primary);
+}
+
+/* ============================================================
+   Search Container
+   ============================================================ */
+#search-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  background: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-card);
+}
+
+#search-input {
+  flex: 1 1 180px;
+  background: var(--color-input-bg);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 1rem;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+#search-input::placeholder {
+  color: var(--color-text-muted);
+}
+
+#search-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(233, 69, 96, 0.2);
+}
+
+#search-btn {
+  background: var(--color-btn-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 1.3rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+
+#search-btn:hover {
+  background: var(--color-btn-primary-hover);
+  transform: translateY(-1px);
+}
+
+#search-btn:active {
+  transform: translateY(0);
+}
+
+#location-btn {
+  background: var(--color-btn-secondary);
+  color: var(--color-text);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 1rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  white-space: nowrap;
+}
+
+#location-btn:hover {
+  background: var(--color-btn-secondary-hover);
+  transform: translateY(-1px);
+}
+
+/* ============================================================
+   Temperature Unit Toggle
+   ============================================================ */
+#unit-toggle-container {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+}
+
+#unit-toggle-container label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: color var(--transition);
+}
+
+#unit-toggle-container label:hover {
+  color: var(--color-text);
+}
+
+#unit-toggle-container input[type="radio"] {
+  accent-color: var(--color-primary);
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+/* ============================================================
+   Error Container
+   ============================================================ */
+#error-container {
+  background: var(--color-error-bg);
+  border: 1px solid var(--color-error-border);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1.2rem;
+  text-align: center;
+  /* Animate.css animate__shakeX will be added via JS */
+}
+
+#error-message {
+  color: #ff6b81;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ============================================================
+   Weather Display Container
+   ============================================================ */
+#weather-container {
+  background: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem 1.5rem;
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  /* Animate.css animate__fadeIn will be added via JS */
+}
+
+#city-name {
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-weight: 700;
+  color: #fff;
+  /* Edge case: long city names */
+  overflow-wrap: break-word;
+  word-break: break-word;
+  text-overflow: ellipsis;
+}
+
+#temperature {
+  font-size: clamp(2rem, 8vw, 3rem);
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.1;
+}
+
+#description {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  text-transform: capitalize;
+}
+
+#humidity,
+#wind-speed {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ============================================================
+   Search History (Session Storage)
+   ============================================================ */
+#history-container {
+  background: var(--color-card);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.2rem;
+  backdrop-filter: blur(8px);
+}
+
+#history-container h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  margin-bottom: 0.6rem;
+}
+
+#history-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#history-list li {
+  background: var(--color-btn-secondary);
+  border: 1px solid var(--color-card-border);
+  border-radius: 999px;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.82rem;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+
+#history-list li:hover {
+  background: var(--color-btn-secondary-hover);
+  transform: scale(1.04);
+}
+
+/* ============================================================
+   Refresh Button
+   ============================================================ */
+#refresh-btn {
+  align-self: center;
+  background: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-card-border);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem 1.4rem;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+#refresh-btn:hover {
+  color: var(--color-text);
+  border-color: var(--color-text-muted);
+  transform: rotate(15deg) scale(1.05);
+}
+
+/* ============================================================
+   Responsive – Tablet (max-width: 600px)
+   ============================================================ */
+@media (max-width: 600px) {
+  body {
+    padding: 1.2rem 0.75rem 3rem;
+    align-items: flex-start;
+  }
+
+  #search-container {
+    flex-direction: column;
+  }
+
+  #search-input,
+  #search-btn,
+  #location-btn {
+    width: 100%;
+    flex: unset;
+  }
+
+  #temperature {
+    font-size: 2.4rem;
+  }
+
+  #welcome-popup-content {
+    padding: 2rem 1.2rem;
+  }
+}
+
+/* ============================================================
+   Responsive – Small Mobile (max-width: 380px)
+   ============================================================ */
+@media (max-width: 380px) {
+  #app-container h1 {
+    font-size: 1.4rem;
+  }
+
+  #city-name {
+    font-size: 1.2rem;
+  }
+
+  #temperature {
+    font-size: 2rem;
+  }
+}
+
+/* ============================================================
+   Animate.css helper overrides
+   (ensure animations play correctly inside the layout)
+   ============================================================ */
+.animate__animated {
+  --animate-duration: 0.5s;
+}
