@@ -4,9 +4,13 @@
   "type": "module",
   "scripts": {
     "build": "node build.js",
-    "dev": "node build.js && npx serve ."
+    "dev": "node build.js && npx serve .",
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "dependencies": {
     "dotenv": "^17.3.1"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
   }
 }
