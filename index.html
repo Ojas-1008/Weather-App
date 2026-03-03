@@ -1,81 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
 
-    <!-- Welcome Popup (shown on first visit via cookie check) -->
-    <div id="welcome-popup" class="hidden">
-      <div id="welcome-popup-content">
-        <p>Welcome to your Weather App</p>
-        <button id="welcome-close-btn">Close</button>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- Welcome Popup (shown on first visit via cookie check) -->
+  <div id="welcome-popup" class="hidden">
+    <div id="welcome-popup-content">
+      <p>Welcome to your Weather App</p>
+      <button id="welcome-close-btn">Close</button>
+    </div>
+  </div>
+
+  <div id="app-container">
+
+    <!-- Real-Time Clock -->
+    <div id="clock"></div>
+
+    <h1 data-aos="fade-down">Weather App</h1>
+
+    <!-- Search Container -->
+    <div id="search-container" data-aos="fade-up">
+      <input type="text" id="search-input" placeholder="Enter city name..." aria-label="City name" />
+      <button id="search-btn">Search</button>
+      <button id="location-btn">Use Current Location</button>
     </div>
 
-    <div id="app-container">
-
-      <!-- Real-Time Clock -->
-      <div id="clock"></div>
-
-      <h1 data-aos="fade-down">Weather App</h1>
-
-      <!-- Search Container -->
-      <div id="search-container" data-aos="fade-up">
-        <input
-          type="text"
-          id="search-input"
-          placeholder="Enter city name..."
-          aria-label="City name"
-        />
-        <button id="search-btn">Search</button>
-        <button id="location-btn">Use Current Location</button>
-      </div>
-
-      <!-- Temperature Unit Toggle -->
-      <div id="unit-toggle-container">
-        <label>
-          <input type="radio" name="unit" id="unit-celsius" value="metric" />
-          °C
-        </label>
-        <label>
-          <input type="radio" name="unit" id="unit-fahrenheit" value="imperial" />
-          °F
-        </label>
-      </div>
-
-      <!-- Error Message Container (hidden by default) -->
-      <div id="error-container" class="hidden">
-        <p id="error-message"></p>
-      </div>
-
-      <!-- Weather Display Container -->
-      <div id="weather-container" class="hidden" data-aos="zoom-in">
-        <h2 id="city-name"></h2>
-        <p id="temperature"></p>
-        <p id="description"></p>
-        <p id="humidity"></p>
-        <p id="wind-speed"></p>
-      </div>
-
-      <!-- Search History (Session Storage) -->
-      <div id="history-container">
-        <h3>Search History</h3>
-        <ul id="history-list"></ul>
-      </div>
-
-      <!-- Refresh Button -->
-      <button id="refresh-btn">Refresh</button>
-
+    <!-- Temperature Unit Toggle -->
+    <div id="unit-toggle-container">
+      <label>
+        <input type="radio" name="unit" id="unit-celsius" value="celsius" />
+        °C
+      </label>
+      <label>
+        <input type="radio" name="unit" id="unit-fahrenheit" value="fahrenheit" />
+        °F
+      </label>
     </div>
 
-    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-    <script>AOS.init({ once: true, duration: 600 });</script>
-    <script src="script.js" defer></script>
-  </body>
+    <!-- Error Message Container (hidden by default) -->
+    <div id="error-container" class="hidden">
+      <p id="error-message"></p>
+    </div>
+
+    <!-- Weather Display Container -->
+    <div id="weather-container" class="hidden" data-aos="zoom-in">
+      <h2 id="city-name"></h2>
+      <p id="temperature"></p>
+      <p id="description"></p>
+      <p id="humidity"></p>
+      <p id="wind-speed"></p>
+    </div>
+
+    <!-- Search History (Session Storage) -->
+    <div id="history-container">
+      <h3>Search History</h3>
+      <ul id="history-list">
+        <!-- History items will be injected here by JS -->
+
+      </ul>
+    </div>
+
+    <!-- Refresh Button -->
+    <button id="refresh-btn">Refresh</button>
+
+  </div>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ once: true, duration: 600 });</script>
+  <script src="dist/script.js" defer></script>
+</body>
+
 </html>
