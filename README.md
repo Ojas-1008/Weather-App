@@ -89,6 +89,54 @@ Weather/
 | `npm run build` | Builds the project and injects API key |
 | `npm run dev` | Build and serve locally |
 
+## 🌐 Deploy to Netlify
+
+### Option 1: Deploy via GitHub (Recommended)
+
+1. **Push your code to GitHub** (you've already done this!)
+
+2. **Get an API key** from [OpenWeatherMap](https://openweathermap.org/api) (free)
+
+3. **Go to [Netlify](https://app.netlify.com/)** and sign in
+
+4. **Click "Add new site" → "Import an existing project"**
+
+5. **Connect to GitHub** and select your `Weather-App` repository
+
+6. **Configure build settings:**
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+
+7. **Add Environment Variable:**
+   - Click **"Environment variables"** (or go to Site Settings → Environment Variables)
+   - Click **"Add a variable"**
+   - Key: `OPENWEATHER_API_KEY`
+   - Value: `your_actual_api_key_here`
+   - Click **"Save"**
+
+8. **Click "Deploy site"**
+
+That's it! Netlify will build and deploy your app. 🎉
+
+### Option 2: Deploy via Netlify CLI
+
+```bash
+# Install Netlify CLI
+npm install -g netlify-cli
+
+# Login to Netlify
+netlify login
+
+# Link to your site (or create new)
+netlify link
+
+# Set environment variable
+netlify env:set OPENWEATHER_API_KEY your_api_key_here
+
+# Deploy
+netlify deploy --prod
+```
+
 ## 🎨 UI Libraries Used
 
 - **[Animate.css](https://animate.style/)** - CSS animation library

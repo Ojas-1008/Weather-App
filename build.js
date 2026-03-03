@@ -22,7 +22,7 @@ scriptContent = scriptContent.replace(
     `const API_KEY = '${API_KEY}';`
 );
 
-// Write to dist folder
+// Write to dist folder (Netlify will publish this)
 const distDir = path.join(import.meta.dirname, 'dist');
 if (!fs.existsSync(distDir)) {
     fs.mkdirSync(distDir, { recursive: true });
@@ -31,4 +31,11 @@ if (!fs.existsSync(distDir)) {
 const distScriptPath = path.join(distDir, 'script.js');
 fs.writeFileSync(distScriptPath, scriptContent, 'utf8');
 
-console.log('✓ Build complete: dist/script.js created with API key injected');
+// Also copy HTML and CSS to dist
+const htmlContent = fs.readFileSync(path.join(import.meta.dirname, 'index.html'), 'utf8');
+fs.writeFileSync(path.join(distDir, 'index.html'), htmlContent, 'utf8');
+
+const cssContent = fs.readFileSync(path.join(import.meta.dirname, 'style.css'), 'utf8');
+fs.writeFileSync(path.join(distDir, 'style.css'), cssContent, 'utf8');
+
+console.log('✓ Build complete: dist/ folder ready for deployment');
